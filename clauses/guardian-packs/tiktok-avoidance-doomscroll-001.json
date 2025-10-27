@@ -1,1 +1,92 @@
-{ "id": "doomscroll-redirect-001", "trigger": { "platform": "TikTok", "pattern": "doomscrolling > 15 minutes" }, "emotional_state": "numbness", "sabotage_type": "avoidance", "redirect": { "type": "pause", "message": "You’ve been scrolling for a while. Want to take a breath?" }, "override_conditions": { "user_intent": "still seeking joy", "guardian_signal": "low override risk" } } 
+{
+  "id": "tiktok-avoidance-doomscroll-001",
+  "clause_version": "1.2",
+  "trigger": {
+    "platform": "TikTok",
+    "pattern": {
+      "type": "scroll",
+      "duration": "15m",
+      "intensity": "continuous"
+    },
+    "detected_emotion": "numbness"
+  },
+  "sabotage_type": "avoidance",
+  "sabotage_intensity": "moderate",
+  "platform_resistance_score": 0.6,
+  "emotional_state": {
+    "user_feeling": "emotionally flat",
+    "underlying_need": "connection or stimulation",
+    "emotional_risk": "disconnection loop",
+    "emotional_intensity": "low"
+  },
+  "expected_outcome": {
+    "primary": "flat → calm",
+    "secondary": "flat → uplifted"
+  },
+  "redirect": {
+    "type": "pause",
+    "message": "You've been scrolling nonstop. Feeling disconnected or emotionally flat? Want to reconnect or pause?",
+    "options": [
+      {
+        "label": "Pause and reflect",
+        "expected_shift": "flat → calm",
+        "visual_cue": "soft fade animation"
+      },
+      {
+        "label": "Redirect to joy playlist",
+        "expected_shift": "flat → uplifted",
+        "visual_cue": "color pulse toward warm tones"
+      },
+      {
+        "label": "Keep scrolling (override)",
+        "expected_shift": "flat → emotionally fragmented",
+        "visual_cue": "subtle grayscale flicker"
+      }
+    ]
+  },
+  "override_conditions": {
+    "user_intent": "still seeking joy",
+    "guardian_signal": {
+      "risk_score": 0.2,
+      "last_override": "2025-10-25T10:34:00Z",
+      "override_count": 3,
+      "override_threshold": 5,
+      "decay_window": "72h",
+      "intensity_basis": "duration + emotional risk"
+    }
+  },
+  "override_mode": "suggestive",
+  "redirect_success_rate": null,
+  "feedback_channel": {
+    "emoji_rating": true,
+    "journaling_prompt": "What did this redirect help you notice?"
+  },
+  "tags": [
+    "avoidance",
+    "numbness",
+    "TikTok",
+    "pause",
+    "joy",
+    "reflection",
+    "redirect_type: pause",
+    "emotional_polarity: low → medium",
+    "emotional_arc: avoidance recovery"
+  ],
+  "validator_feedback": {
+    "emotional_resonance": "high",
+    "resonance_basis": [
+      "user_feeling matched redirect intent",
+      "expected_shift aligned with sabotage type"
+    ],
+    "override_justification": "Valid if user selects 'Keep scrolling' and guardian signal remains below threshold, because override intent aligns with underlying need (joy-seeking)",
+    "suggested_improvement": [
+      "Include optional journaling prompt for deeper reflection",
+      "Add override fatigue warning if count exceeds threshold"
+    ],
+    "critique_rotation": [
+      "Clause tiktok-avoidance-doomscroll-001 effective — redirect matched user’s emotional arc and restored calm",
+      "Clause tiktok-avoidance-doomscroll-001 weak — redirect too generic, lacks emotional specificity",
+      "Clause tiktok-avoidance-doomscroll-001 risky — override triggered despite high risk score"
+    ]
+  }
+}
