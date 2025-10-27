@@ -1,1 +1,114 @@
-{ "id": "autoplay-binge-002", "trigger": { "platform": "YouTube", "pattern": "autoplay > 3 videos" }, "emotional_state": "contentment", "sabotage_type": "binge", "redirect": { "type": "pause", "message": "You've been watching a lot of videos. How about a quick break?" }, "override_conditions": { "user_intent": "still seeking entertainment", "guardian_signal": "medium override risk" } } 
+{
+  "id": "youtube-binge-autoplay-spiral-006",
+  "clause_version": "1.5",
+  "trigger": {
+    "platform": "YouTube",
+    "pattern": {
+      "type": "autoplay",
+      "duration": "25m",
+      "intensity": "passive"
+    },
+    "detected_emotion": "mental fatigue"
+  },
+  "sabotage_type": "binge",
+  "sabotage_intensity": "moderate",
+  "platform_resistance_score": 0.5,
+  "resistance_basis": "autoplay chaining + passive scroll + low-friction recommendations",
+  "sabotage_decay_window": "30m",
+  "emotional_state": {
+    "user_feeling": "mentally tired but still watching",
+    "underlying_need": "rest or intentional stimulation",
+    "emotional_risk": "cognitive depletion",
+    "emotional_intensity": "medium",
+    "emotional_decay_window": "20m",
+    "emotional_floor": "mental shutdown"
+  },
+  "expected_outcome": {
+    "primary": "fatigue → rested",
+    "secondary": "fatigue → intentional"
+  },
+  "redirect": {
+    "type": "pause",
+    "message": "You've been watching passively for a while. Feeling mentally tired? Want to pause or shift into something more intentional?",
+    "options": [
+      {
+        "label": "Pause and rest",
+        "expected_shift": "fatigue → rested",
+        "visual_cue": "soft fade to neutral tones",
+        "expected_duration": "5–10m",
+        "redirect_intent": "rest",
+        "redirect_intensity": "low"
+      },
+      {
+        "label": "Switch to intentional playlist",
+        "expected_shift": "fatigue → intentional",
+        "visual_cue": "gentle highlight with focus cue",
+        "expected_duration": "10–15m",
+        "redirect_intent": "intentional stimulation",
+        "redirect_intensity": "medium"
+      },
+      {
+        "label": "Keep watching (override)",
+        "expected_shift": "fatigue → cognitively dulled",
+        "visual_cue": "subtle gray flicker",
+        "expected_duration": "unknown",
+        "redirect_intent": "override bypass",
+        "redirect_intensity": "low"
+      }
+    ],
+    "emotional_exit_condition": "user reports clarity or intentionality"
+  },
+  "override_conditions": {
+    "user_intent": "background noise or passive comfort",
+    "guardian_signal": {
+      "risk_score": 0.45,
+      "last_override": "2025-10-26T13:20:00Z",
+      "override_count": 2,
+      "override_threshold": 5,
+      "decay_window": "72h",
+      "intensity_basis": "duration + emotional depletion"
+    },
+    "lockout_trigger": {
+      "risk_score_threshold": 0.6,
+      "override_count_threshold": 6,
+      "action": "pause override access for emotional recalibration"
+    }
+  },
+  "override_mode": "suggestive",
+  "redirect_success_rate": null,
+  "feedback_channel": {
+    "emoji_rating": true,
+    "journaling_prompt": "Did this redirect help you feel more rested or intentional?"
+  },
+  "co_sign_status": "pending",
+  "co_sign_required": true,
+  "co_sign_basis": "moderate sabotage + passive override pattern",
+  "tags": [
+    "binge",
+    "fatigue",
+    "YouTube",
+    "pause",
+    "rest",
+    "intentionality",
+    "redirect_type: pause",
+    "emotional_polarity: low → stable",
+    "emotional_arc: binge recovery"
+  ],
+  "validator_feedback": {
+    "emotional_resonance": "high",
+    "resonance_basis": [
+      "user_feeling matched redirect intent",
+      "expected_shift aligned with sabotage type"
+    ],
+    "override_justification": "Valid if user selects 'Keep watching' and guardian signal remains below threshold, but passive comfort may mask deeper depletion and delay recovery",
+    "suggested_improvement": [
+      "Include optional audio cue for intentional shift",
+      "Trigger override lockout if risk score exceeds 0.6"
+    ],
+    "critique_rotation": [
+      "Clause youtube-binge-autoplay-spiral-006 effective — redirect restored intentionality and interrupted passive spiral",
+      "Clause youtube-binge-autoplay-spiral-006 weak — redirect lacked emotional pull",
+      "Clause youtube-binge-autoplay-spiral-006 risky — override triggered despite cognitive depletion"
+    ]
+  }
+}
