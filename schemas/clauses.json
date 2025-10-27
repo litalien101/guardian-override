@@ -1,0 +1,8 @@
+{
+  "schema": "clause",
+  "fields": [
+    "id",
+    "text",
+    "emotional_tags"
+  ]
+}

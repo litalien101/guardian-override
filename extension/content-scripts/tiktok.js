@@ -1,0 +1,1 @@
+// TikTok content script placeholder
