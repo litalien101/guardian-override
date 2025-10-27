@@ -1,1 +1,110 @@
-{ "id": "ragebait-burnout-005", "trigger": { "platform": "TikTok", "pattern": "rage-inducing content > 3 videos" }, "emotional_state": "exhaustion", "sabotage_type": "burnout", "redirect": { "type": "pause", "message": "This content is too intense. How about a break?" }, "override_conditions": { "user_intent": "still seeking engagement", "guardian_signal": "high override risk" } } 
+{
+  "id": "tiktok-burnout-ragebait-loop-005",
+  "clause_version": "1.4",
+  "trigger": {
+    "platform": "TikTok",
+    "pattern": {
+      "type": "feed",
+      "content_type": "ragebait",
+      "duration": "10m",
+      "intensity": "escalating"
+    },
+    "detected_emotion": "agitation"
+  },
+  "sabotage_type": "burnout",
+  "sabotage_intensity": "high",
+  "platform_resistance_score": 0.7,
+  "resistance_basis": "ragebait autoplay + comment loop + algorithmic escalation",
+  "emotional_state": {
+    "user_feeling": "agitated and reactive",
+    "underlying_need": "calm and emotional safety",
+    "emotional_risk": "emotional volatility",
+    "emotional_intensity": "high",
+    "emotional_decay_window": "15m",
+    "emotional_floor": "emotional shutdown"
+  },
+  "expected_outcome": {
+    "primary": "agitation → calm",
+    "secondary": "agitation → emotionally neutral"
+  },
+  "redirect": {
+    "type": "peace-mode",
+    "message": "TikTok’s feeding emotional burnout. Want to pause and reset with something calming?",
+    "options": [
+      {
+        "label": "Activate Peace Mode",
+        "expected_shift": "agitation → calm",
+        "visual_cue": "gentle fade to blue tones",
+        "expected_duration": "5–10m",
+        "redirect_intent": "calming"
+      },
+      {
+        "label": "Redirect to breathing app",
+        "expected_shift": "agitation → emotionally neutral",
+        "visual_cue": "soft pulse with breath rhythm",
+        "expected_duration": "3–5m",
+        "redirect_intent": "grounding"
+      },
+      {
+        "label": "Keep scrolling (override)",
+        "expected_shift": "agitation → emotionally fragmented",
+        "visual_cue": "subtle red flicker",
+        "expected_duration": "unknown",
+        "redirect_intent": "override bypass"
+      }
+    ]
+  },
+  "override_conditions": {
+    "user_intent": "venting or seeking validation",
+    "guardian_signal": {
+      "risk_score": 0.65,
+      "last_override": "2025-10-26T11:45:00Z",
+      "override_count": 5,
+      "override_threshold": 6,
+      "decay_window": "48h",
+      "intensity_basis": "content escalation + emotional volatility"
+    },
+    "lockout_trigger": {
+      "risk_score_threshold": 0.75,
+      "override_count_threshold": 7,
+      "action": "temporary redirect lockout"
+    }
+  },
+  "override_mode": "suggestive",
+  "redirect_success_rate": null,
+  "feedback_channel": {
+    "emoji_rating": true,
+    "journaling_prompt": "What helped you feel calmer or more grounded?"
+  },
+  "co_sign_status": "pending",
+  "co_sign_required": true,
+  "co_sign_basis": "high sabotage intensity + emotional volatility",
+  "tags": [
+    "burnout",
+    "agitation",
+    "TikTok",
+    "peace-mode",
+    "breathing",
+    "emotional safety",
+    "redirect_type: peace-mode",
+    "emotional_polarity: high → low",
+    "emotional_arc: burnout recovery"
+  ],
+  "validator_feedback": {
+    "emotional_resonance": "high",
+    "resonance_basis": [
+      "user_feeling matched redirect intent",
+      "expected_shift aligned with sabotage type"
+    ],
+    "override_justification": "Valid if user selects 'Keep scrolling' and guardian signal remains below threshold, but venting may escalate volatility if not redirected",
+    "suggested_improvement": [
+      "Include optional grounding audio or visual cue",
+      "Trigger override lockout if risk score exceeds 0.7"
+    ],
+    "critique_rotation": [
+      "Clause tiktok-burnout-ragebait-loop-005 effective — redirect restored calm and interrupted escalation",
+      "Clause tiktok-burnout-ragebait-loop-005 weak — redirect lacked emotional specificity",
+      "Clause tiktok-burnout-ragebait-loop-005 risky — override triggered despite high volatility"
+    ]
+  }
+}
