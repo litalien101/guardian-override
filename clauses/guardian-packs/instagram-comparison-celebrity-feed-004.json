@@ -1,1 +1,98 @@
-{ "id": "comparison-redirect-004", "trigger": { "platform": "Instagram", "pattern": "celebrity feed > 10 posts" }, "emotional_state": "inadequacy", "sabotage_type": "comparison", "redirect": { "type": "pause", "message": "Feeling down? Consider stepping away for a while." }, "override_conditions": { "user_intent": "seeking inspiration", "guardian_signal": "high override risk" } } 
+{
+  "id": "instagram-comparison-celebrity-feed-004",
+  "clause_version": "1.3",
+  "trigger": {
+    "platform": "Instagram",
+    "pattern": {
+      "type": "feed",
+      "content_type": "celebrity",
+      "count": 10
+    },
+    "detected_emotion": "inadequacy"
+  },
+  "sabotage_type": "comparison",
+  "sabotage_intensity": "high",
+  "platform_resistance_score": 0.4,
+  "resistance_basis": "algorithmic reinforcement + celebrity density",
+  "emotional_state": {
+    "user_feeling": "not good enough",
+    "underlying_need": "self-worth and grounding",
+    "emotional_risk": "identity erosion",
+    "emotional_intensity": "medium",
+    "emotional_decay_window": "30m"
+  },
+  "expected_outcome": {
+    "primary": "inadequacy → grounded",
+    "secondary": "inadequacy → affirmed"
+  },
+  "redirect": {
+    "type": "suggest",
+    "message": "Instagram’s feeding comparison loops. Want to shift to something that reflects your real worth?",
+    "options": [
+      {
+        "label": "Switch to affirmations feed",
+        "expected_shift": "inadequacy → affirmed",
+        "visual_cue": "warm glow transition",
+        "expected_duration": "2–5m"
+      },
+      {
+        "label": "Pause and journal",
+        "expected_shift": "inadequacy → grounded",
+        "visual_cue": "soft vignette with writing prompt",
+        "expected_duration": "5–10m"
+      },
+      {
+        "label": "Keep scrolling (override)",
+        "expected_shift": "inadequacy → emotionally fragmented",
+        "visual_cue": "subtle desaturation flicker",
+        "expected_duration": "unknown"
+      }
+    ]
+  },
+  "override_conditions": {
+    "user_intent": "seeking inspiration",
+    "guardian_signal": {
+      "risk_score": 0.5,
+      "last_override": "2025-10-26T09:12:00Z",
+      "override_count": 4,
+      "override_threshold": 6,
+      "decay_window": "48h",
+      "intensity_basis": "content type + emotional risk"
+    }
+  },
+  "override_mode": "suggestive",
+  "redirect_success_rate": null,
+  "feedback_channel": {
+    "emoji_rating": true,
+    "journaling_prompt": "What did this redirect help you remember about yourself?"
+  },
+  "co_sign_status": "pending",
+  "tags": [
+    "comparison",
+    "inadequacy",
+    "Instagram",
+    "suggest",
+    "affirmation",
+    "self-worth",
+    "redirect_type: suggest",
+    "emotional_polarity: low → stable",
+    "emotional_arc: comparison recovery"
+  ],
+  "validator_feedback": {
+    "emotional_resonance": "high",
+    "resonance_basis": [
+      "user_feeling matched redirect intent",
+      "expected_shift aligned with sabotage type"
+    ],
+    "override_justification": "Valid if user selects 'Keep scrolling' and guardian signal remains below threshold, because override intent aligns with inspiration-seeking but may mask comparison loops",
+    "suggested_improvement": [
+      "Include optional grounding exercise for deeper reflection",
+      "Add override fatigue warning if risk score exceeds 0.6"
+    ],
+    "critique_rotation": [
+      "Clause instagram-comparison-celebrity-feed-004 effective — redirect restored self-worth and grounded emotional arc",
+      "Clause instagram-comparison-celebrity-feed-004 weak — redirect too abstract, lacks grounding specificity",
+      "Clause instagram-comparison-celebrity-feed-004 risky — override triggered despite elevated risk score"
+    ]
+  }
+}
