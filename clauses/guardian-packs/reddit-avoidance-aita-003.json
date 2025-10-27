@@ -1,0 +1,1 @@
+{ "id": "reddit-avoidance-003", "trigger": { "platform": "Reddit", "pattern": "subreddit: AITA > 5 posts" }, "emotional_state": "discomfort", "sabotage_type": "avoidance", "redirect": { "type": "pause", "message": "This can be draining. Time for a mental reset?" }, "override_conditions": { "user_intent": "still seeking closure", "guardian_signal": "low override risk" } } 
