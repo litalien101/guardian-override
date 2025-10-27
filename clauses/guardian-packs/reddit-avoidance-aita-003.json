@@ -1,1 +1,119 @@
-{ "id": "reddit-avoidance-003", "trigger": { "platform": "Reddit", "pattern": "subreddit: AITA > 5 posts" }, "emotional_state": "discomfort", "sabotage_type": "avoidance", "redirect": { "type": "pause", "message": "This can be draining. Time for a mental reset?" }, "override_conditions": { "user_intent": "still seeking closure", "guardian_signal": "low override risk" } } 
+{
+  "id": "reddit-avoidance-comment-scroll-007",
+  "clause_version": "1.5",
+  "trigger": {
+    "platform": "Reddit",
+    "pattern": {
+      "type": "comment_scroll",
+      "duration": "20m",
+      "intensity": "looping"
+    },
+    "detected_emotion": "emotional numbness"
+  },
+  "sabotage_type": "avoidance",
+  "sabotage_intensity": "moderate",
+  "platform_resistance_score": 0.6,
+  "resistance_basis": "infinite comment threads + low-effort dopamine loops + ambient avoidance",
+  "sabotage_decay_window": "45m",
+  "emotional_state": {
+    "user_feeling": "numb but still scrolling",
+    "underlying_need": "connection or emotional clarity",
+    "emotional_risk": "detachment spiral",
+    "emotional_intensity": "low",
+    "emotional_decay_window": "25m",
+    "emotional_floor": "emotional shutdown"
+  },
+  "expected_outcome": {
+    "primary": "numbness → clarity",
+    "secondary": "numbness → connected"
+  },
+  "redirect": {
+    "type": "pause",
+    "message": "You've been scrolling through comments for a while. Feeling emotionally flat or disconnected? Want to pause or reconnect with something that restores presence?",
+    "options": [
+      {
+        "label": "Pause and reflect",
+        "expected_shift": "numbness → clarity",
+        "visual_cue": "soft fade with breathing rhythm",
+        "expected_duration": "5–10m",
+        "redirect_intent": "reflection",
+        "redirect_intensity": "low",
+        "redirect_theme": "presence"
+      },
+      {
+        "label": "Redirect to connection playlist",
+        "expected_shift": "numbness → connected",
+        "visual_cue": "gentle pulse with warm tones",
+        "expected_duration": "10–15m",
+        "redirect_intent": "emotional reconnection",
+        "redirect_intensity": "medium",
+        "redirect_theme": "connection"
+      },
+      {
+        "label": "Keep scrolling (override)",
+        "expected_shift": "numbness → emotionally unfocused",
+        "visual_cue": "subtle gray flicker",
+        "expected_duration": "unknown",
+        "redirect_intent": "override bypass",
+        "redirect_intensity": "low",
+        "redirect_theme": "ambient loop"
+      }
+    ],
+    "emotional_exit_condition": "user reports clarity or emotional presence"
+  },
+  "override_conditions": {
+    "user_intent": "seeking distraction or ambient comfort",
+    "guardian_signal": {
+      "risk_score": 0.55,
+      "last_override": "2025-10-26T14:10:00Z",
+      "override_count": 3,
+      "override_threshold": 5,
+      "decay_window": "72h",
+      "intensity_basis": "duration + emotional detachment"
+    },
+    "lockout_trigger": {
+      "risk_score_threshold": 0.65,
+      "override_count_threshold": 6,
+      "action": "pause override access for emotional recalibration"
+    }
+  },
+  "override_mode": "suggestive",
+  "redirect_success_rate": null,
+  "redirect_fallback": "low-stimulation playlist or journaling nudge",
+  "emotional_reentry_window": "30m",
+  "feedback_channel": {
+    "emoji_rating": true,
+    "journaling_prompt": "Did this redirect help you feel more present or emotionally clear?"
+  },
+  "co_sign_status": "pending",
+  "co_sign_required": true,
+  "co_sign_basis": "ambient avoidance + emotional detachment spiral",
+  "tags": [
+    "avoidance",
+    "numbness",
+    "Reddit",
+    "pause",
+    "reflection",
+    "connection",
+    "redirect_type: pause",
+    "emotional_polarity: low → medium",
+    "emotional_arc: avoidance recovery"
+  ],
+  "validator_feedback": {
+    "emotional_resonance": "high",
+    "resonance_basis": [
+      "user_feeling matched redirect intent",
+      "expected_shift aligned with sabotage type"
+    ],
+    "override_justification": "Valid if user selects 'Keep scrolling' and guardian signal remains below threshold, but ambient comfort may mask deeper detachment and delay emotional reconnection",
+    "suggested_improvement": [
+      "Include optional journaling or connection cue",
+      "Trigger override lockout if risk score exceeds 0.65"
+    ],
+    "critique_rotation": [
+      "Clause reddit-avoidance-comment-scroll-007 effective — redirect restored emotional clarity and interrupted avoidance loop",
+      "Clause reddit-avoidance-comment-scroll-007 weak — redirect lacked emotional specificity",
+      "Clause reddit-avoidance-comment-scroll-007 risky — override triggered despite detachment spiral"
+    ]
+  }
+}
