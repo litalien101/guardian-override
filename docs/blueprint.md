@@ -5,6 +5,7 @@ A dignity‑first governance engine for healthy digital boundaries, emotional sa
 ---
 
 Purpose
+
 Guardian Override is a governance platform for parental guidance and digital well‑being, built on respect, transparency, and consent.  
 This blueprint defines the architecture, emotional safeguards, and modular components required for scalable builds, validator‑grade launches, and critique‑proof adoption across desktop, mobile, and therapist dashboards.
 
