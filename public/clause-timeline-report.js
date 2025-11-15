@@ -1,19 +1,17 @@
 // clause-timeline-report.js
-// Timeline simulation with summary report
+// Timeline simulation with summary report (gentle redirects only)
 
 const eventLog = [];
 
 const rules = [
-  { name: "Scrolling Break", trigger: { type: "duration", value: 30 }, message: "Stretch break!", note: "Helps avoid overload.", consent: ["guardian"] },
-  { name: "Bedtime Lock", trigger: { type: "time", value: 22 }, message: "Bedtime lock engaged.", note: "Supports healthy sleep.", consent: ["guardian"] },
-  { name: "Study Focus", trigger: { type: "app", value: "study_app" }, message: "Focus mode active.", note: "Keeps concentration strong.", consent: ["guardian","therapist"] },
-  { name: "Social Limit", trigger: { type: "duration", value: 60 }, message: "Social limit reached.", note: "Encourages balance.", consent: ["guardian"] }
+  { name: "Scrolling Break", trigger: { type: "duration", value: 30 }, message: "Stretch break!", redirect: "Try a breathing exercise.", note: "Helps avoid overload." },
+  { name: "Bedtime Reminder", trigger: { type: "time", value: 22 }, message: "It's bedtime soon.", redirect: "Switch to a calming playlist.", note: "Supports healthy sleep." },
+  { name: "Study Focus", trigger: { type: "app", value: "study_app" }, message: "Focus mode active.", redirect: "Stay on your study app.", note: "Keeps concentration strong." },
+  { name: "Social Limit", trigger: { type: "duration", value: 60 }, message: "Social limit reached.", redirect: "Consider a hobby or chat with a friend.", note: "Encourages balance." }
 ];
 
-const consentState = { guardian: true, therapist: true };
-
-function log(type, rule, activity) {
-  eventLog.push({ type, rule: rule.name, time: new Date().toLocaleTimeString(), activity });
+function log(rule, activity) {
+  eventLog.push({ rule: rule.name, time: new Date().toLocaleTimeString(), activity });
 }
 
 function simulate(activity) {
@@ -24,12 +22,9 @@ function simulate(activity) {
     if (rule.trigger.type === "app" && activity.app === rule.trigger.value) triggered = true;
 
     if (triggered) {
-      const hasConsent = rule.consent.every(role => consentState[role]);
-      if (!hasConsent) {
-        log("consent_block", rule, activity);
-        return;
-      }
-      log("trigger", rule, activity);
+      console.log(`${rule.name} → ${rule.message}`);
+      console.log(`Redirect: ${rule.redirect}`);
+      log(rule, activity);
     }
   });
 }
@@ -50,9 +45,8 @@ timeline.forEach(activity => simulate(activity));
 function generateReport() {
   const summary = {};
   eventLog.forEach(entry => {
-    if (!summary[entry.rule]) summary[entry.rule] = { triggers: 0, blocks: 0, note: "" };
-    if (entry.type === "trigger") summary[entry.rule].triggers++;
-    if (entry.type === "consent_block") summary[entry.rule].blocks++;
+    if (!summary[entry.rule]) summary[entry.rule] = { triggers: 0, note: "" };
+    summary[entry.rule].triggers++;
     const rule = rules.find(r => r.name === entry.rule);
     if (rule) summary[entry.rule].note = rule.note;
   });
@@ -60,7 +54,7 @@ function generateReport() {
   console.log("\n=== Daily Report ===");
   Object.keys(summary).forEach(ruleName => {
     const data = summary[ruleName];
-    console.log(`${ruleName}: fired ${data.triggers}, blocked ${data.blocks}. Note: ${data.note}`);
+    console.log(`${ruleName}: fired ${data.triggers} time(s). Note: ${data.note}`);
   });
 }
 
