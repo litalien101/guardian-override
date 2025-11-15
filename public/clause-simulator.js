@@ -10,28 +10,25 @@ const rules = [
     name: "Scrolling Break",
     trigger: { type: "duration", value: 30 }, // minutes
     action: "suggest_break",
-    message: "You've been scrolling for 30 minutes. Time to stretch!",
-    redirect: "Try a quick breathing exercise.",
-    note: "Helps avoid overload.",
-    consent: ["guardian"]
+    message: "You've been scrolling for 30 minutes.",
+    redirect: "Try a quick stretch or breathing exercise.",
+    note: "Helps avoid overload."
   },
   {
-    name: "Bedtime Lock",
+    name: "Bedtime Reminder",
     trigger: { type: "time", value: 22 }, // 10 PM
     action: "pause_app",
     message: "It's bedtime soon.",
     redirect: "Switch to a calming playlist or audiobook.",
-    note: "Supports healthy sleep.",
-    consent: ["guardian"]
+    note: "Supports healthy sleep."
   },
   {
     name: "Study Focus",
     trigger: { type: "app", value: "study_app" },
-    action: "block_social",
+    action: "focus_mode",
     message: "Focus mode is active.",
     redirect: "Stay on your study app — social apps will gently pause.",
-    note: "Keeps concentration strong.",
-    consent: ["guardian", "therapist"]
+    note: "Keeps concentration strong."
   },
   {
     name: "Social Limit",
@@ -39,21 +36,13 @@ const rules = [
     action: "warn_limit",
     message: "You've reached your 1-hour social media limit.",
     redirect: "Consider switching to a hobby or messaging a friend directly.",
-    note: "Encourages balance.",
-    consent: ["guardian"]
+    note: "Encourages balance."
   }
 ];
 
-// Consent state (who has approved)
-const consentState = {
-  guardian: true,
-  therapist: true
-};
-
 // Log helper
-function log(type, rule, activity) {
+function log(rule, activity) {
   eventLog.push({
-    type,
     rule: rule.name,
     action: rule.action,
     time: new Date().toLocaleTimeString(),
@@ -77,7 +66,7 @@ function simulate(activity) {
       console.log(`${rule.name} → ${rule.message}`);
       console.log(`Redirect: ${rule.redirect}`);
       console.log(`Note: ${rule.note}`);
-      log("trigger", rule, activity);
+      log(rule, activity);
     }
   });
 }
@@ -100,7 +89,7 @@ function generateReport() {
   const summary = {};
   eventLog.forEach(entry => {
     if (!summary[entry.rule]) summary[entry.rule] = { triggers: 0, note: "" };
-    if (entry.type === "trigger") summary[entry.rule].triggers++;
+    summary[entry.rule].triggers++;
     const rule = rules.find(r => r.name === entry.rule);
     if (rule) summary[entry.rule].note = rule.note;
   });
