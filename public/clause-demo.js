@@ -1,40 +1,28 @@
 // clause-demo.js
-// Demo: simple boundary rules with consent and logging
+// Simple demo: one rule with gentle redirect
 
-// Event log to keep track of what happens
-const eventLog = [];
+const clause = {
+  name: "Scrolling Break",
+  trigger: { type: "duration", value: 30 }, // minutes
+  action: "suggest_break",
+  message: "You've been scrolling for 30 minutes.",
+  redirect: "Try a quick stretch or breathing exercise."
+};
 
-// Example rules (clauses)
-const rules = [
-  {
-    name: "Scrolling Break",
-    trigger: { type: "duration", value: 30 }, // minutes
-    action: "suggest_break",
-    message: "You've been scrolling for 30 minutes. Time to stretch!",
-    note: "Helps avoid overload.",
-    consent: ["guardian"]
-  },
-  {
-    name: "Bedtime Lock",
-    trigger: { type: "time", value: 22 }, // 10 PM
-    action: "pause_app",
-    message: "It's bedtime. Apps are paused until morning.",
-    note: "Supports healthy sleep.",
-    consent: ["guardian"]
-  },
-  {
-    name: "Study Focus",
-    trigger: { type: "app", value: "study_app" },
-    action: "block_social",
-    message: "Focus mode: Social apps are blocked while studying.",
-    note: "Keeps concentration strong.",
-    consent: ["guardian", "therapist"]
-  },
-  {
-    name: "Social Limit",
-    trigger: { type: "duration", value: 60 }, // minutes
-    action: "warn_limit",
-    message: "You've hit your 1-hour social media limit today.",
+function simulateUsage(minutes) {
+  console.log(`User has been scrolling for ${minutes} minutes...`);
+  if (minutes >= clause.trigger.value) {
+    console.log(`${clause.name} → ${clause.message}`);
+    console.log(`Redirect: ${clause.redirect}`);
+  } else {
+    console.log("No rule triggered yet.");
+  }
+}
+
+// Demo run
+simulateUsage(10);
+simulateUsage(30);
+simulateUsage(45);    message: "You've hit your 1-hour social media limit today.",
     note: "Encourages balance.",
     consent: ["guardian"]
   }
