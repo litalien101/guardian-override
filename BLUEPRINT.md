@@ -1,7 +1,7 @@
-Guardian Override — Technical Blueprint
+Guardian Override - Technical Blueprint - v1.2_draft
 
 1. Purpose & Principles
-Guardian Override is an emotional-governance layer for families. It helps set screen boundaries that honor dignity, consent, and shared agency — not control.
+Guardian Override is an emotional-governance layer for families. It helps set screen boundaries that honor dignity, consent, and shared agency, not control.
 
 Dignity-first: No surveillance, no punishment.
 
@@ -18,32 +18,33 @@ Guardian Override is built as a modular system with four core components:
 
 Code
 [User Device] → [Redirect Client] → [Core Engine] → [Audit Log] → [Family Dashboard]
-🔹 Family Dashboard
+- Family Dashboard
 Web/mobile UI for defining clauses, reviewing redirects, and journaling.
 
 Shows patterns over time and prompts family reflection.
 
-🔹 Core Engine
+- Core Engine
 Accepts and evaluates clauses (rules).
 
 Runs trigger detection (e.g., time-based, behavioral).
 
 Emits redirect events and syncs across platforms.
 
-🔹 Redirect Clients
+- Redirect Clients
 Chrome Extension: Monitors activity and enforces redirect rules.
 
 Android App: Embedded client for mobile enforcement.
 
 Simulator: Mimics user behavior to test clause logic safely.
 
-🔹 Audit Log
+- Audit Log
 Stores all redirect events with metadata.
 
 Powers journal review and accountability.
 
 3. Data Models
-🧾 Clause
+ 
+ Clause
 json
 {
   "id": "string",
@@ -53,7 +54,8 @@ json
   "createdBy": "user_id",
   "consent": ["user_id_1", "user_id_2"]
 }
-📍 RedirectEvent
+ 
+ RedirectEvent
 json
 {
   "id": "string",
@@ -63,7 +65,8 @@ json
   "context": { "url": "optional", "app": "optional" },
   "outcome": "suggested | ignored | accepted"
 }
-📘 JournalEntry
+ 
+ JournalEntry
 json
 {
   "id": "string",
@@ -72,6 +75,7 @@ json
   "createdBy": "user_id",
   "createdAt": "datetime"
 }
+
 Schemas support versioning and validation. TypeScript interfaces or JSON Schema recommended.
 
 4. Clause Templates (Starter Pack)
