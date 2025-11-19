@@ -20,6 +20,7 @@
     "access": "public"
   },
   "scripts": {
+    "test": "jest ==coverage"
     "start": "node dist/cjs/index.js",
     "dev": "nodemon src/index.ts",
     "lint": "eslint . --ext .ts,.js",
