@@ -241,25 +241,27 @@ Versioning issues	Clause snapshots, schema validation
 
 ## 15. Collaboration Rituals
 
-- Weekly sync meetings (see MEETING_TEMPLATES/Weekly_Sync.md)
+- Weekly sync meetings (See [Weekly_Sync.md](https://github.com/litalien101/guardian-override/blob/main/MEETING_TEMPLATES/Weekly_Sync.md))
 
-- Design critique sessions (see MEETING_TEMPLATES/Design_Critique.md)
+- Design critique sessions (see [Design_Critique.md](https://github.com/litalien101/guardian-override/blob/main/MEETING_TEMPLATES/Design_Critique.md))
 
-- Partner check-ins (see MEETING_TEMPLATES/Partner_Checkin.md)
+- Partner check-ins (see [Partner_Checkin.md](https://github.com/litalien101/guardian-override/blob/main/MEETING_TEMPLATES/Partner_Checkin.md))
 
-- Decision logging (see DECISION_PROCESS.md)
+- Decision logging (see [DECISION_PROCESS.md](https://github.com/litalien101/guardian-override/blob/main/ONBOARDING_GUIDE.md)
+)
 
 ---
 
 ## 16. Companion Docs
 
-- ONBOARDING_GUIDE.md
+- [ONBOARDING_GUIDE.md](https://github.com/litalien101/guardian-override/blob/main/ONBOARDING_GUIDE.md)
 
-- GOVERNANCE.md
 
-- CONTRIBUTING.md
+- [GOVERNANCE.md](https://github.com/litalien101/guardian-override/blob/main/GOVERNANCE.md)
 
-- EQUITY_AND_PROFIT_SHARING.md
+- [CONTRIBUTING.md](https://github.com/litalien101/guardian-override/blob/main/CONTRIBUTING.md)
+
+- [EQUITY_AND_PROFIT_SHARING.md](https://github.com/litalien101/guardian-override/blob/main/EQUITY_AND_PROFIT_SHARING.md)
 
 ---
 
