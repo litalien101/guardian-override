@@ -48,3 +48,41 @@ Before publishing:
 - Update this file with your changes.
 - Run `npm version patch|minor|major` to bump the version.
 - Push tags so the release is traceable.
+
+---
+
+## Release template snippet
+
+```
+## [X.Y.Z] - YYYY-MM-DD
+### Added
+- New features introduced in this release.
+
+### Changed
+- Updates to existing functionality, workflows, or documentation.
+
+### Fixed
+- Bugs or issues resolved.
+
+### Removed
+- Features or files removed.
+```
+
+**Example in practice**
+```
+## [0.2.0] - 2025-12-01
+### Added
+- New redirect type: “stretch break” reminder.
+- Weekly summary export for family logs.
+
+### Changed
+- Improved onboarding guide with clearer examples.
+- Updated simulator UI for readability.
+
+### Fixed
+- Crash when loading multiple rules in simulator.
+- Typo in ROADMAP.md.
+
+### Removed
+- Deprecated placeholder module from early prototype.
+```
