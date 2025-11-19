@@ -1,16 +1,23 @@
 {
   "name": "guardian-override",
   "version": "0.1.0",
-  "description": "Guardian Override helps families set healthy screen boundaries with dignity and respect. Gentle redirects, not control.",
-  "main": "index.js",
+  "description": "Guardian Override helps families set healthy screen boundaries with dignity and respect — gentle redirects, not control.",
+  "main": "dist/cjs/index.js",          // CommonJS entry point
+  "module": "dist/esm/index.js",       // ES Module entry point
+  "types": "dist/esm/index.d.ts",      // TypeScript type declarations
   "scripts": {
-    "start": "",
+    "start": "node dist/cjs/index.js",
+    "dev": "nodemon src/index.ts",
+    "lint": "eslint . --ext .ts,.js",
     "test": "echo \"No tests defined yet\" && exit 0",
-    "lint": "eslint ."
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build": "npm run build:cjs && npm run build:esm",
+    "clean": "rm -rf dist"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/litalien101/guardian-override.git"
   },
   "keywords": [
     "guardian",
@@ -19,15 +26,23 @@
     "screen-time",
     "boundaries",
     "dignity-first",
-    "prototype"
+    "prototype",
+    "governance",
+    "emotional-safety"
   ],
   "author": "Guardian Override Contributors",
   "license": "MIT",
   "dependencies": {
-    "express": ""
+    "express": "^4.18.2"
   },
   "devDependencies": {
-    "eslint": "^",
-    "nodemon": "^"
+    "typescript": "^5.6.3",
+    "eslint": "^8.56.0",
+    "nodemon": "^3.0.1",
+    "@types/node": "^20.11.30",
+    "@types/express": "^4.17.21"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
