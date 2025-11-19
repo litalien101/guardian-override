@@ -1,88 +1,142 @@
-Guardian Override
+# Guardian Override
 
-Helping families set healthy screen boundaries—with dignity, not surveillance
-
----
-
-Overview
-Guardian Override is a prototype toolkit for families who want healthier digital habits without heavy‑handed controls. Instead of locking apps or spying on activity, it uses gentle redirects and transparent boundaries to encourage balance and independence.
-
-Think of it as a guide rail: it doesn’t block the path, but it helps steer everyone back on track when screens start to take over.
+Helping families set healthy screen boundaries - with dignity, not surveillance.
 
 ---
 
-Why It Matters
-- Respect first: Children and teens deserve dignity. No hidden monitoring, no punishment.  
-- Healthy habits: Nudges and reminders reduce stress and encourage balance.  
-- Family focus: Boundaries can be set across devices, collaboratively.  
-- Transparency: Every redirect is logged so families can review and discuss together.  
-- Ethics: Guardian Override is not a parental control app—it’s a trust‑based toolkit.
+## Vision
+
+Guardian Override is an emotional governance layer for families. It creates gentle, transparent screen boundaries that protect trust, reduce burnout, and encourage autonomy. It’s not about control, it’s about making healthier choices easier and more collaborative.
 
 ---
 
-What’s Inside
-This repo is a scaffold—a foundation for building a multi‑platform system. Current modules include:
+## Principles
 
-- Docs: Notes on ethics, design, and system principles.  
-- Chrome extension: Early prototype for browser‑based redirects.  
-- Android skeleton: Initial mobile app structure (Kotlin).  
-- Simulator: Preview engine to test redirect rules before applying them.  
-- Schemas & clauses: Draft JSON structures for rules and boundaries.  
-- SDK & CLI packages: Early developer tools.  
-- Tests: Basic checks and mockups to validate functionality.  
+- **Dignity-first:** No hidden monitoring or punishments. Boundaries are transparent, and consent matters.
+- **Gentle redirects:** Nudges and guide rails, not locks. Help steer attention back to balance.
+- **Collaborative setup:** Guardians and kids co-create boundaries and review logs together.
+- **Plain language:** Rules, settings, and messages are understandable by everyone.
+- **Ethical defaults:** Guardian Override is explicitly not a parental control app.
 
-Example rule schema:  
-`json
+---
+
+## What this is
+
+- **Purpose:** A prototype toolkit that sets screen boundaries through redirects, reminders, and shared journaling.
+- **Approach:** Preview rules before applying, log every redirect, and use those logs for honest family conversations.
+- **Outcome:** Less stress. More clarity. Healthy habits that feel fair and respectful.
+
+---
+
+## Architecture overview
+
+- **Simulator:** Preview engine to test redirect rules and scenarios before they go live.
+- **Schemas and clauses:** Draft JSON structures for policies, triggers, and actions.
+- **Chrome extension:** Early browser-based prototype to apply redirects in real time.
+- **Android skeleton:** Initial mobile foundation for extending the same principles beyond the browser.
+- **Journal:** Logging for every redirect, enabling review and family discussion.
+- **SDK and CLI packages:** Early developer tools for building, testing, and integrating modules.
+
+---
+
+## What’s in this repository
+
+- **Docs:** Ethics, design principles, governance, onboarding, roadmap, and MVP planning.
+- **Packages:** Early scaffolding for SDK/CLI as integration points.
+- **Public landing:** Initial index.html for a simple explainer and future onboarding flow.
+- **Tests:** Basic checks and mockups to validate assumptions and rule behavior.
+- **iOS placeholder:** Reserved for parity once Android and web stabilize.
+
+---
+
+## How it works
+
+1. **Set boundaries:** Define rules like “After 30 minutes of scrolling, suggest a break.”
+2. **Preview safely:** Use the simulator to see how rules apply before turning them on.
+3. **Redirect gently:** When a boundary is reached, nudge with context—never shame or punish.
+4. **Review together:** Every redirect is logged. Families can discuss patterns and adjust.
+
+---
+
+**Example rule:**
+
+```json
 {
   "rule": "scrolling_break",
   "trigger": "30_minutes",
   "action": "suggest_break",
   "message": "Time to stretch!"
 }
-`
+```
 
 ---
 
-How It Works
-1. Set boundaries: Guardians define redirect rules (e.g., “After 30 minutes of scrolling, suggest a break”).  
-2. Preview: The simulator shows how rules would apply in real scenarios.  
-3. Redirect: When a boundary is reached, the system nudges the user with a reminder or alternative activity.  
-4. Journal: Every redirect is logged for family review and discussion.  
-
----
-
-Current Status
-- Early prototype—many modules are placeholders.  
-- No public releases yet.  
-- Foundation for a multi‑platform system.  
-
----
-
-Roadmap
-- Phase 1: Build out simulator and schemas.  
-- Phase 2: Connect Chrome extension + Android app to simulator.  
-- Phase 3: Add logging/journaling for family review.  
-- Phase 4: Improve usability, expand redirect options, prepare for pilot testing.  
-
----
-
-Contributing
-We welcome ideas, feedback, and contributions.  
-
-Quick start for developers:  
-`bash
-git clone https://github.com/your-org/guardian-override.git
-cd guardian-override
+## Quick start (prototype)
+```
+bash
+git clone https://github.com/litalien101/guardian-override.git
 npm install
-npm start   # launches the simulator
-`
+npm start
+```
+This launches the early simulator for testing rule behaviors and user flows
 
-See also:  
-- Code of Conduct  
-- Contributing Guide  
-- Security Policy  
+---
+## Current status
+- Early prototype:
+Foundational scaffolds and draft schemas; many modules are not production-ready.
+
+- No public release:
+Focused on simulator, rule definitions, and consent-driven UX before pilots.
+
+- Cross-platform vision:
+Web first, with Android and iOS staged for parity.
+
+--- 
+
+## Roadmap
+
+- Phase 1:
+Strengthen simulator, schemas, and clauses.
+
+- Phase 2:
+Connect Chrome extension and Android app to simulator.
+
+- Phase 3:
+Build journaling and review experience for families.
+
+- Phase 4:
+Usability, accessibility, and expanded redirects; prepare for pilot testing.
 
 ---
 
-📜 License
-Licensed under the MIT License.
+## Contributing
+
+- Start here: Read the Code of Conduct, Contribution Guide, and Onboarding Guide.
+
+- Design values: Keep dignity, consent, and clarity at the center.
+
+- Dev approach: Small, testable modules. Document assumptions. Prefer transparent defaults.
+
+- Feedback: Propose rule schemas, simulator scenarios, and UX copy that fosters trust.
+
+---
+
+## Governance and equity
+
+- Governance: 
+Templates provided to align ethical decisions, consent flows, and community participation.
+
+- Equity and profit sharing: Draft structures for fair collaboration and transparent rewards.
+
+- Security and safety: Security policy outlines expectations for data handling and boundary integrity.
+
+---
+
+## License
+MIT License — open for responsible use and collaboration.
+
+---
+
+## A note on tone and promise
+Guardian Override is built for families who want healthier digital lives without sacrificing dignity. The promise isn’t perfect control, it’s better conversations, gentle boundaries, and more trust. If you care about protecting attention and relationships, you’re in the right place.
+
