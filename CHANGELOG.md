@@ -51,6 +51,41 @@ Before publishing:
 
 ---
 
+## Release Checklist
+
+Before publishing a new release:
+
+1. **Update Changelog**
+   - Add a new section in `CHANGELOG.md` using the release template.
+   - Document changes under *Added, Changed, Fixed, Removed*.
+
+2. **Bump Version**
+   - Run `npm version patch` for bug fixes.
+   - Run `npm version minor` for new features.
+   - Run `npm version major` for breaking changes.
+
+3. **Build Outputs**
+   - Run `npm run build` to generate both CommonJS (`dist/cjs`) and ES Module (`dist/esm`) builds.
+   - Verify that type declarations (`.d.ts`) are generated.
+
+4. **Test**
+   - Run `npm test` (or manual checks if tests aren’t defined yet).
+   - Ensure both CJS and ESM builds run correctly.
+
+5. **Lint & Clean**
+   - Run `npm run lint` to check code style.
+   - Run `npm run clean` if needed before rebuilding.
+
+6. **Commit & Tag**
+   - Commit updated files (`CHANGELOG.md`, `package.json`, build outputs).
+   - Push Git tags created by `npm version`.
+
+7. **Publish**
+   - Run `npm publish` (defaults to public access per `publishConfig`).
+   - Verify package contents (`files` field ensures only `dist/`, `README.md`, and `LICENSE.md` are included).
+
+---
+
 ## Release template snippet
 
 ```
