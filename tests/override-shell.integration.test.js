@@ -15,16 +15,16 @@ describe('Integration: OverrideShell + RedirectEngine + ClauseSimulator', () => 
     simulator = new ClauseSimulator();
   });
 
-  // Example: shell runs a command that triggers clause evaluation and redirect
+  // Basic shell command
   test('runs status command and returns ok', () => {
     const result = shell.run('status');
     expect(result).toBe('ok');
   });
 
+  // Manual wiring: clause + redirect
   test('applies redirect when clause evaluates true', () => {
     const clause = { type: 'simple', value: true };
     const rule = { type: 'conditional', condition: simulator.evaluate(clause), target: '/dashboard' };
-
     const result = engine.apply(rule);
     expect(result).toBe('/dashboard');
   });
@@ -32,20 +32,62 @@ describe('Integration: OverrideShell + RedirectEngine + ClauseSimulator', () => 
   test('blocks redirect when clause evaluates false', () => {
     const clause = { type: 'simple', value: false };
     const rule = { type: 'conditional', condition: simulator.evaluate(clause), target: '/dashboard' };
-
     const result = engine.apply(rule);
     expect(result).toBeNull();
   });
 
-  test('shell can coordinate clause + redirect', () => {
-    // Simulate a shell command that checks a clause and applies a redirect
+  // AND clause integration
+  test('applies redirect only if all clauses are true', () => {
+    const clause = { type: 'and', clauses: [{ value: true }, { value: true }] };
+    const rule = { type: 'conditional', condition: simulator.evaluate(clause), target: '/settings' };
+    const result = engine.apply(rule);
+    expect(result).toBe('/settings');
+  });
+
+  test('blocks redirect if any clause is false', () => {
+    const clause = { type: 'and', clauses: [{ value: true }, { value: false }] };
+    const rule = { type: 'conditional', condition: simulator.evaluate(clause), target: '/settings' };
+    const result = engine.apply(rule);
+    expect(result).toBeNull();
+  });
+
+  // OR clause integration
+  test('applies redirect if at least one clause is true', () => {
     const clause = { type: 'or', clauses: [{ value: false }, { value: true }] };
-    const condition = simulator.evaluate(clause);
-    const rule = { type: 'conditional', condition, target: '/profile' };
+    const rule = { type: 'conditional', condition: simulator.evaluate(clause), target: '/profile' };
+    const result = engine.apply(rule);
+    expect(result).toBe('/profile');
+  });
 
-    const redirect = engine.apply(rule);
+  test('blocks redirect if all clauses are false', () => {
+    const clause = { type: 'or', clauses: [{ value: false }, { value: false }] };
+    const rule = { type: 'conditional', condition: simulator.evaluate(clause), target: '/profile' };
+    const result = engine.apply(rule);
+    expect(result).toBeNull();
+  });
 
-    // In a real shell, this might be wrapped in shell.run('redirect')
-    expect(redirect).toBe('/profile');
+  // Direct shell method: runRedirect()
+  test('shell runRedirect applies when clause is true', () => {
+    const clause = { type: 'simple', value: true };
+    const result = shell.runRedirect(clause, '/dashboard');
+    expect(result).toBe('/dashboard');
+  });
+
+  test('shell runRedirect blocks when clause is false', () => {
+    const clause = { type: 'simple', value: false };
+    const result = shell.runRedirect(clause, '/dashboard');
+    expect(result).toBeNull();
+  });
+
+  test('shell runRedirect works with AND clause', () => {
+    const clause = { type: 'and', clauses: [{ value: true }, { value: true }] };
+    const result = shell.runRedirect(clause, '/settings');
+    expect(result).toBe('/settings');
+  });
+
+  test('shell runRedirect works with OR clause', () => {
+    const clause = { type: 'or', clauses: [{ value: false }, { value: true }] };
+    const result = shell.runRedirect(clause, '/profile');
+    expect(result).toBe('/profile');
   });
 });
