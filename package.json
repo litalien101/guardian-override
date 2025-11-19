@@ -1,1 +1,33 @@
-- placeholder 
+{
+  "name": "guardian-override",
+  "version": "0.1.0",
+  "description": "Guardian Override helps families set healthy screen boundaries with dignity and respect. Gentle redirects, not control.",
+  "main": "index.js",
+  "scripts": {
+    "start": "",
+    "test": "echo \"No tests defined yet\" && exit 0",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "guardian",
+    "override",
+    "family",
+    "screen-time",
+    "boundaries",
+    "dignity-first",
+    "prototype"
+  ],
+  "author": "Guardian Override Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "express": ""
+  },
+  "devDependencies": {
+    "eslint": "^",
+    "nodemon": "^"
+  }
+}
