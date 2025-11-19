@@ -1,0 +1,50 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.  
+This project follows [Semantic Versioning](https://semver.org/).
+
+---
+
+## [Unreleased]
+- Placeholder for upcoming changes.  
+- Use sections below (*Added, Changed, Fixed, Removed*) when preparing the next release.
+
+---
+
+## [0.1.0] - 2025-11-18
+### Added
+- Initial project setup with dual TypeScript build (CommonJS + ES Modules).
+- Core documentation files:
+  - `README.md` - project overview
+  - `LICENSE.md` - MIT license with plain-language summary
+  - `MVP_PLAN.md` - minimum viable product plan
+  - `ONBOARDING_GUIDE.md` - contributor onboarding guide
+  - `ROADMAP.md` - forward-looking development roadmap
+  - `SECURITY.md` - security policy and vulnerability reporting process
+- Starter `package.json` with scripts, dependencies, and dual entry points.
+- Base `tsconfig.json` plus `tsconfig.cjs.json` and `tsconfig.esm.json` for dual builds.
+- Initial simulator scaffolding and repo structure.
+
+### Changed
+- Refined project description to emphasize dignity-first boundaries and emotional governance.
+- Improved onboarding and governance docs for clarity and accessibility.
+
+### Fixed
+- Removed jargon and artificial language from community-facing documentation.
+- Corrected inconsistencies in repo structure and contributor workflow notes.
+
+### Removed
+- Placeholder boilerplate files from early drafts.
+
+---
+
+## Versioning Strategy
+
+- **MAJOR** (`X.0.0`) -> Breaking changes (e.g., incompatible schema updates).
+- **MINOR** (`0.X.0`) -> Backwards-compatible new features (e.g., new redirect types).
+- **PATCH** (`0.0.X`) -> Bug fixes, small improvements, documentation updates.
+
+Before publishing:
+- Update this file with your changes.
+- Run `npm version patch|minor|major` to bump the version.
+- Push tags so the release is traceable.
