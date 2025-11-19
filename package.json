@@ -5,6 +5,20 @@
   "main": "dist/cjs/index.js",          // CommonJS entry point
   "module": "dist/esm/index.js",       // ES Module entry point
   "types": "dist/esm/index.d.ts",      // TypeScript type declarations
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "node dist/cjs/index.js",
     "dev": "nodemon src/index.ts",
