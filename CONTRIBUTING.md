@@ -32,6 +32,22 @@ npm start
 
 ---
 
+## Versioning Strategy
+
+Guardian Override follows [Semantic Versioning](https://semver.org/):
+
+- **MAJOR** (X.0.0): Breaking changes
+- **MINOR** (0.X.0): Backwards‑compatible new features
+- **PATCH** (0.0.X): Bug fixes and small improvements
+
+Before publishing:
+- Update `CHANGELOG.md` with your changes.
+- Run `npm version patch|minor|major` to bump the version.
+- Push tags so the release is traceable.
+
+
+---
+
 ## Contribution standards
 
 **Respect:** 
