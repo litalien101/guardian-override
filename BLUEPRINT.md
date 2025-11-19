@@ -1,51 +1,54 @@
-Guardian Override - Technical Blueprint - v1.2_draft
+# Guardian Override - Technical Blueprint - v1.2_draft
 
-1. Purpose & Principles
+---
+
+## 1. Purpose & Principles
 Guardian Override is an emotional-governance layer for families. It helps set screen boundaries that honor dignity, consent, and shared agency, not control.
 
-Dignity-first: No surveillance, no punishment.
+- Dignity-first: No surveillance, no punishment.
 
-Clarity: All rules and actions are transparent and reviewable.
+- Clarity: All rules and actions are transparent and reviewable.
 
-Consent: Boundaries are co-created and agreed upon.
+- Consent: Boundaries are co-created and agreed upon.
 
-Emotional safety: Nudges are gentle, not guilt-inducing.
+- Emotional safety: Nudges are gentle, not guilt-inducing.
 
-Auditability: Every redirect is logged and traceable.
+- Auditability: Every redirect is logged and traceable.
 
-2. System Architecture Overview
+ ---
+
+## 2. System Architecture Overview
 Guardian Override is built as a modular system with four core components:
 
-Code
-[User Device] → [Redirect Client] → [Core Engine] → [Audit Log] → [Family Dashboard]
-- Family Dashboard
-Web/mobile UI for defining clauses, reviewing redirects, and journaling.
+```
+[User Device] -> [Redirect Client] -> [Core Engine] -> [Audit Log] -> [Family Dashboard]
+```
+## Family Dashboard
+- Web/mobile UI for defining clauses, reviewing redirects, and journaling.
+- Shows patterns over time and prompts family reflection.
 
-Shows patterns over time and prompts family reflection.
+## Core Engine
+- Accepts and evaluates clauses (rules).
+- Runs trigger detection (e.g., time-based, behavioral).
+- Emits redirect events and syncs across platforms.
 
-- Core Engine
-Accepts and evaluates clauses (rules).
+## Redirect Clients
+- Chrome Extension: Monitors activity and enforces redirect rules.
 
-Runs trigger detection (e.g., time-based, behavioral).
+## Android App
+- Embedded client for mobile enforcement.
 
-Emits redirect events and syncs across platforms.
+## Simulator
+- Mimics user behavior to test clause logic safely.
 
-- Redirect Clients
-Chrome Extension: Monitors activity and enforces redirect rules.
+## Audit Log
+- Stores all redirect events with metadata.
+- Powers journal review and accountability.
 
-Android App: Embedded client for mobile enforcement.
-
-Simulator: Mimics user behavior to test clause logic safely.
-
-- Audit Log
-Stores all redirect events with metadata.
-
-Powers journal review and accountability.
-
-3. Data Models
+## 3. Data Models
  
- Clause
-json
+ #### Clause
+```
 {
   "id": "string",
   "type": "time_based | activity_based",
@@ -54,9 +57,9 @@ json
   "createdBy": "user_id",
   "consent": ["user_id_1", "user_id_2"]
 }
- 
- RedirectEvent
-json
+ ```
+ #### RedirectEvent
+```
 {
   "id": "string",
   "clauseId": "string",
@@ -65,9 +68,9 @@ json
   "context": { "url": "optional", "app": "optional" },
   "outcome": "suggested | ignored | accepted"
 }
- 
- JournalEntry
-json
+```` 
+ #### JournalEntry
+```
 {
   "id": "string",
   "redirectEventId": "string",
@@ -75,149 +78,199 @@ json
   "createdBy": "user_id",
   "createdAt": "datetime"
 }
-
+```
 Schemas support versioning and validation. TypeScript interfaces or JSON Schema recommended.
 
-4. Clause Templates (Starter Pack)
+---
+
+## 4. Clause Templates (Starter Pack)
 Examples to help families visualize use cases:
-
+```
 “After 30 minutes of scrolling, suggest a break.”
-
+```
+```
 “If social media use exceeds 20 minutes, prompt a journal reflection.”
-
+```
+```
 “At bedtime hours, suggest wind-down mode.”
-
+```
+```
 “If three nudges are ignored in a row, prompt a family check-in.”
+```
+---
 
-5. Key Workflows
-Clause Creation: Family defines a clause via Dashboard → all members consent.
+## 5. Key Workflows
 
-Simulation: Test clause behavior across scenarios → refine before activation.
+- Clause Creation: Family defines a clause via Dashboard -> all members consent.
 
-Live Monitoring: Clients detect triggers → emit redirect event.
+- Simulation: Test clause behavior across scenarios -> refine before activation.
 
-Redirect Suggestion: Gentle nudge appears → user accepts, ignores, or delays.
+- Live Monitoring: Clients detect triggers -> emit redirect event.
 
-Logging: RedirectEvent stored in Audit Log → outcome/context recorded.
+- Redirect Suggestion: Gentle nudge appears -> user accepts, ignores, or delays.
 
-Review & Reflection: Families journal responses → adjust clauses.
+- Logging: RedirectEvent stored in Audit Log -> outcome/context recorded.
 
-6. Emotional & Consent Safeguards
-Explicit Consent: Clauses only activate with full agreement.
+- Review & Reflection: Families journal responses -> adjust clauses.
 
-Soft Defaults: Nudges are gentle; strength configurable.
+---
 
-Snooze Option: Users can delay nudges; delays logged.
+## 6. Emotional & Consent Safeguards
 
-Reflection Prompts: Dashboard encourages review and adjustment.
+- Explicit Consent: Clauses only activate with full agreement.
 
-Co-Governance: Rules are co-authored, not imposed.
+- Soft Defaults: Nudges are gentle; strength configurable.
 
-7. Governance & Roles
-Role	Responsibilities
-Guardian	Defines clauses, gives consent, reviews journal
-Founder/Admin	Maintains engine, schema, infrastructure
-Contributor	Builds modules, proposes improvements
-Rule proposals follow: Submit → Review → Consent → Activation. Clauses are versioned; Audit Log links each event to its clause version.
+- Snooze Option: Users can delay nudges; delays logged.
 
-8. Consent Flow UX Notes
-Visual walkthrough in Dashboard during setup.
+- Reflection Prompts: Dashboard encourages review and adjustment.
 
-Confirmation prompts before activation.
+- Co-Governance: Rules are co-authored, not imposed.
 
-Ability to revoke or adjust consent anytime.
+## 7. Governance & Roles
 
-9. Security, Privacy & Threat Model
-Encryption: Sensitive data encrypted at rest.
+#### Role	Responsibilities
+- Architect	Defines clauses, gives consent, reviews journal
+- Founder/Admin	Maintains engine, schema, infrastructure
+- Contributor	Builds modules, proposes improvements
 
-TLS: Secure client-server communication.
+Rule proposals follow: 
+```
+Submit -> Review -> Consent -> Activation.
+```
+Clauses are versioned; Audit Log links each event to its clause version.
 
-Access Control: Role-based permissions enforced.
+---
 
-Data Minimization: Only essential metadata logged.
+## 8. Consent Flow UX Notes
 
-Offline Resilience: Clients cache events and sync later.
+- Visual walkthrough in Dashboard during setup.
 
-Integrity: Optional digital signatures for tamper-proof logs.
+- Confirmation prompts before activation.
 
-Threats defended against: unauthorized access, tampering, accidental misuse. Not prioritized yet: advanced surveillance, nation-state actors.
+- Ability to revoke or adjust consent anytime.
 
-10. Extensibility
-New Clients: iOS, desktop, smart TVs.
+---
 
-Rule Types: Time-based, activity-based, contextual.
+## 9. Security, Privacy & Threat Model
 
-Integrations: Calendar, habit trackers, coaching platforms.
+- Encryption: Sensitive data encrypted at rest.
 
-Analytics: Pattern detection and family insights.
+- TLS: Secure client-server communication.
 
-Export: PDF/CSV for journal and redirect history.
+- Access Control: Role-based permissions enforced.
 
-11. Risks & Mitigations
-Risk	Mitigation
-Over-nudging	Snooze option, review prompts
-Privacy concerns	Encryption, opt-in context logging
-Rule complexity	Simulator, templates, UI guidance
-Adoption gap	Pilot testing, co-design feedback
+- Data Minimization: Only essential metadata logged.
+
+- Offline Resilience: Clients cache events and sync later.
+
+- Integrity: Optional digital signatures for tamper-proof logs.
+
+- Threats defended against: unauthorized access, tampering, accidental misuse.
+
+- Not prioritized yet: advanced surveillance, nation-state actors.
+
+---
+
+## 10. Extensibility
+
+- New Clients: iOS, desktop, smart TVs.
+
+- Rule Types: Time-based, activity-based, contextual.
+
+- Integrations: Calendar, habit trackers, coaching platforms.
+
+- Analytics: Pattern detection and family insights.
+
+- Export: PDF/CSV for journal and redirect history.
+
+---
+
+## 11. Risks & Mitigations
+
+- Risk	Mitigation
+- Over-nudging	Snooze option
+- review prompts
+- Privacy concerns	Encryption
+- opt-in context logging
+Rule complexity	Simulator
+templates, UI guidance
+Adoption gap	Pilot testing
+co-design feedback
 Versioning issues	Clause snapshots, schema validation
-12. Deployment Plan
-Backend: Node.js/TypeScript, REST/GraphQL, PostgreSQL
 
-Clients: React Dashboard, Chrome Extension, Android App, Simulator
+---
 
-Hosting: AWS/GCP/Vercel with managed DB/storage
+## 12. Deployment Plan
 
-Testing: Unit tests, integration tests, security audits
+- Backend: Node.js/TypeScript, REST/GraphQL, PostgreSQL
 
-13. Success Metrics
-Trigger accuracy
+- Clients: React Dashboard, Chrome Extension, Android App, Simulator
 
-Redirect engagement
+- Hosting: AWS/GCP/Vercel with managed DB/storage
 
-Journal reflection rate
+- Testing: Unit tests, integration tests, security audits
 
-Consent completeness
+## 13. Success Metrics
 
-Retention (1, 3, 6 months)
+- Trigger accuracy
 
-Family satisfaction
+- Redirect engagement
 
-14. Roadmap
-MVP delivery
+- Journal reflection rate
 
-Pilot with families
+- Consent completeness
 
-Expand rule library
+- Retention (1, 3, 6 months)
 
-Add coaching integrations
+- Family satisfaction
 
-Mature governance tools
+## 14. Roadmap
 
-15. Collaboration Rituals
-Weekly sync meetings (see MEETING_TEMPLATES/Weekly_Sync.md)
+- MVP delivery
 
-Design critique sessions (see MEETING_TEMPLATES/Design_Critique.md)
+- Pilot with families
 
-Partner check-ins (see MEETING_TEMPLATES/Partner_Checkin.md)
+- Expand rule library
 
-Decision logging (see DECISION_PROCESS.md)
+- Add coaching integrations
 
-16. Companion Docs
-ONBOARDING_GUIDE.md
+- Mature governance tools
 
-GOVERNANCE.md
+---
 
-CONTRIBUTING.md
+## 15. Collaboration Rituals
 
-EQUITY_AND_PROFIT_SHARING.md
+- Weekly sync meetings (see MEETING_TEMPLATES/Weekly_Sync.md)
 
-17. Principles for Team Collaboration
-Iterate in small steps
+- Design critique sessions (see MEETING_TEMPLATES/Design_Critique.md)
 
-Design with empathy
+- Partner check-ins (see MEETING_TEMPLATES/Partner_Checkin.md)
 
-Document everything
+- Decision logging (see DECISION_PROCESS.md)
 
-Respect consent
+---
 
-Measure and reflect
+## 16. Companion Docs
+
+- ONBOARDING_GUIDE.md
+
+- GOVERNANCE.md
+
+- CONTRIBUTING.md
+
+- EQUITY_AND_PROFIT_SHARING.md
+
+---
+
+## 17. Principles for Team Collaboration
+
+- Iterate in small steps
+
+- Design with empathy
+
+- Document everything
+
+- Respect consent
+
+- Measure and reflect
