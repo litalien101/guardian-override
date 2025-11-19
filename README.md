@@ -1,4 +1,6 @@
 # Guardian Override
+![Run Tests](https://github.com/<litalien101>/<guardian-override>/actions/workflows/test.yml/badge.svg)
+[![codecov](https://codecov.io/gh/<litalien101>/<guardian-override>/branch/main/graph/badge.svg)](https://codecov.io/gh/<litalien101>/<guardian-override>)
 
 Helping families set healthy screen boundaries - with dignity, not surveillance.
 
